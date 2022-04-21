@@ -27,6 +27,7 @@ global:
   
     *appender_*;
     Java_*;
+    Dart_*;
     *LogLogic*;
     *LogBuffer*;
   

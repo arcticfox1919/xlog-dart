@@ -47,7 +47,7 @@ void ConsoleLog(const XLoggerInfo* _info, const char* _log)
     char log[16 * 1024] = {0};
 
     if (kConsoleNSLog == sg_console_fun) {
-        snprintf(log, sizeof(log), "[%s][%s][%s:%d, %s][%s", levelStrings[_info->level], NULL == _info->tag ? "" : _info->tag, file_name, _info->line, strFuncName, _log);
+        snprintf(log, sizeof(log), "[%s][%s]: %s", levelStrings[_info->level], NULL == _info->tag ? "" : _info->tag,  _log);
         NSLog(@"%@", [NSString stringWithUTF8String:log]);
         return;
     }

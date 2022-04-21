@@ -45,14 +45,15 @@ if(MSVC)
     include_directories(../comm/windows/zlib)
 
 elseif(APPLE)
-    file(GLOB SELF_TEMP_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR} objc/*.mm)
+    file(GLOB SELF_TEMP_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR} objc/*.mm ffi/c_xlog.cc)
     source_group(objc FILES ${SELF_TEMP_SRC_FILES})
     list(APPEND SELF_SRC_FILES ${SELF_TEMP_SRC_FILES})
 elseif(ANDROID)
     file(GLOB SELF_ANDROID_SRC_FILES RELATIVE ${PROJECT_SOURCE_DIR}
             ../comm/xlogger/xloggerbase.c
             ../comm/xlogger/xlogger.cc
-            jni/*.cc
+            jni/ConsoleLog.cc
+            ffi/c_xlog.cc
             ../mk_template/JNI_OnLoad.cpp)
         
     list(APPEND SELF_SRC_FILES ${SELF_ANDROID_SRC_FILES})

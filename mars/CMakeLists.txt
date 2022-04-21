@@ -45,8 +45,7 @@ if(ANDROID)
     # marsxlog
     set(SELF_LIB_NAME marsxlog)
 
-    file(GLOB SELF_SRC_FILES libraries/mars_android_sdk/jni/JNI_OnLoad.cc
-            libraries/mars_xlog_sdk/jni/import.cc)
+    file(GLOB SELF_SRC_FILES libraries/mars_xlog_sdk/jni/import.cc)
 
     add_library(${SELF_LIB_NAME} SHARED ${SELF_SRC_FILES})
     install(TARGETS ${SELF_LIB_NAME} LIBRARY DESTINATION ${SELF_LIBS_OUT} ARCHIVE DESTINATION ${SELF_LIBS_OUT})

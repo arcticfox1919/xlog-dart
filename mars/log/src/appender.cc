@@ -225,7 +225,7 @@ void XloggerAppender::Close() {
     char mark_info[512] = {0};
     __GetMarkInfo(mark_info, sizeof(mark_info));
     char appender_info[728] = {0};
-    snprintf(appender_info, sizeof(appender_info), "$$$$$$$$$$" __DATE__ "$$$" __TIME__ "$$$$$$$$$$%s\n", mark_info);
+    snprintf(appender_info, sizeof(appender_info), "$$$$$$$$$$ " __DATE__ " $$$ " __TIME__ "$$$$$$$$$$ %s\n", mark_info);
     Write(nullptr, appender_info);
 
     log_close_ = true;
@@ -324,18 +324,18 @@ void XloggerAppender::Open(const XLogConfig& _config) {
     tickcountdiff_t get_mmap_time = tickcount_t().gettickcount() - tick;
 
     char appender_info[728] = {0};
-    snprintf(appender_info, sizeof(appender_info), "^^^^^^^^^^" __DATE__ "^^^" __TIME__ "^^^^^^^^^^%s", mark_info);
+    snprintf(appender_info, sizeof(appender_info), "^^^^^^^^^^ " __DATE__ " ^^^ " __TIME__ " ^^^^^^^^^^ %s", mark_info);
 
     Write(nullptr, appender_info);
     char logmsg[256] = {0};
     snprintf(logmsg, sizeof(logmsg), "get mmap time: %" PRIu64, (int64_t)get_mmap_time);
     Write(nullptr, logmsg);
 
-    Write(nullptr, "MARS_URL: " MARS_URL);
-    Write(nullptr, "MARS_PATH: " MARS_PATH);
+    // Write(nullptr, "MARS_URL: " MARS_URL);
+    // Write(nullptr, "MARS_PATH: " MARS_PATH);
     Write(nullptr, "MARS_REVISION: " MARS_REVISION);
     Write(nullptr, "MARS_BUILD_TIME: " MARS_BUILD_TIME);
-    Write(nullptr, "MARS_BUILD_JOB: " MARS_TAG);
+    // Write(nullptr, "MARS_BUILD_JOB: " MARS_TAG);
 
     snprintf(logmsg, sizeof(logmsg), "log appender mode:%d, use mmap:%d", (int)config_.mode_, use_mmap);
     Write(nullptr, logmsg);
